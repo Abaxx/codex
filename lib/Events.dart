@@ -19,7 +19,9 @@ class EventsPage extends StatelessWidget {
       }else{ // Mobile View
         return Scaffold(
             appBar: AppBar(
-              title: Image.asset('assets/images/Logo.png',height: 80,width: 80,),
+              title: GestureDetector(child: Image.asset('assets/images/Logo.png',height: 80,width: 80,),onTap: (){
+                Navigator.push(context, MaterialPageRoute(builder: (context)=> const HomePage()),);
+              },),
               centerTitle: true,
             ),
             drawer: createDrawer(context),

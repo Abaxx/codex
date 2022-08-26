@@ -6,6 +6,7 @@ import 'package:nextcode/About.dart';
 import 'package:nextcode/Contact.dart';
 import 'package:nextcode/Join.dart';
 import 'package:nextcode/NavBar.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -45,7 +46,11 @@ class HeroSection extends StatelessWidget {
           children: [Column(
             children: [const Text('NEXTCODE\n AFRICA\n 2023',
               style: TextStyle(color: Colors.white,fontWeight: FontWeight.bold,fontSize: 45),textAlign: TextAlign.center,),
-              MaterialButton(onPressed: (){Navigator.push(context, MaterialPageRoute(builder: (context)=> JoinPopUp()),);},color: const Color(0xff5092EF),
+              MaterialButton(onPressed: (){
+                //url to join Nextcode Africa 2023
+                final url = Uri.parse("https://docs.google.com/forms/d/e/1FAIpQLSf6YFtYlzg_CtzK_X4FfMws8EtR5C0l6BBT09IG-Pd3uc0vjA/viewform?usp=sf_link");
+                launchUrl(url);
+              },color: const Color(0xff5092EF),
                 shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
                 child: const Text('Join',style: TextStyle(color: Colors.white,),),)],),
             Image.asset('assets/images/africa_tech_map.png',height: 400,width: 400,)],))

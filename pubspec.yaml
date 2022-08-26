@@ -37,6 +37,8 @@ dependencies:
 
   # To add icons to web
   font_awesome_flutter: ^10.1.0
+  # Url launcher
+  url_launcher: ^6.1.5
 
 dev_dependencies:
   flutter_test:
@@ -62,6 +64,7 @@ flutter:
 
   # To add assets to your application, add an assets section, like this:
   assets:
+    - json/
     - assets/images/Logo.png
     - assets/images/devconf.png
     - assets/images/developer.png
@@ -79,15 +82,8 @@ flutter:
     - assets/images/extreme.png
     - assets/images/hackathon.png
     - assets/images/about_background.png
-    - assets/images/lab_header1.png
-    - assets/images/ai.png
-    - assets/images/driveless.png
-    - assets/images/drone.png
-    - assets/images/events_background1.png
     - assets/images/events_background.png
     - assets/images/robot.png
-    - assets/images/spaceship.png
-    - assets/images/vr.png
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware
 
