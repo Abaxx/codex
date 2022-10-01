@@ -4,10 +4,11 @@ import 'dart:convert';
 
 import 'package:flutter/material.dart';
 import 'package:nextcode/Home.dart';
-import 'package:nextcode/NewsDetail.dart';
+//import 'package:nextcode/NewsDetail.dart';
 
 import 'About.dart';
 import 'NavBar.dart';
+import 'NewsDetail.dart';
 
 class NewsPage extends StatefulWidget {
   const NewsPage({Key? key}) : super(key: key);
@@ -33,7 +34,7 @@ class NewsPageState extends State<NewsPage> {
   List info = [];
   deskTopNews(BuildContext context,int index) {
     return GestureDetector(onTap: (){
-      Navigator.push(context, MaterialPageRoute(builder: (context)=> const NewsDetail()),);
+      Navigator.push(context, MaterialPageRoute(builder: (context)=> NewsDetailPage(info[index]['title'],info[index]['img'],"kdfj")),);
     },
       child: Container(
         margin: const EdgeInsets.symmetric(vertical: 20),
@@ -57,7 +58,7 @@ class NewsPageState extends State<NewsPage> {
 
   mobileNews(BuildContext context,int index) {
     return GestureDetector(onTap: (){
-      Navigator.push(context, MaterialPageRoute(builder: (context)=> const NewsDetail()),);
+      Navigator.push(context, MaterialPageRoute(builder: (context)=> NewsDetailPage(info[index]['title'],info[index]['img'],"kdfj")),);
     },
       child: Container(
         margin: const EdgeInsets.only(bottom: 20),

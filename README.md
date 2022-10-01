@@ -1,6 +1,6 @@
-# nextcod
+# NEXTCODE AFRICA
 
-Deep Technology platform
+Deep Technology Platform for Africans
 
 ## Getting Started
 

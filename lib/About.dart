@@ -30,7 +30,7 @@ class AboutPage extends StatelessWidget {
     });
   }
 }
-// Navigation bar of About,TechTalk,Events,Contact
+// Navigation bar of About,TechTalk,Events,Contact,News,NewDetail
 class Nav extends StatelessWidget {
   const Nav({Key? key}) : super(key: key);
 
