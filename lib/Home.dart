@@ -104,7 +104,7 @@ class ProgramSection extends StatelessWidget {
   {
     return Container(
       height: 250,
-      width: 300,
+      width: 320,
       decoration: BoxDecoration(
         color: Colors.black,
         border: Border.all(
@@ -154,7 +154,8 @@ class TechTalkSection extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
+    return Container(
+      margin: const EdgeInsets.only(bottom: 5),
       width: MediaQuery.of(context).size.width,
       child: Image.asset('assets/images/techtalk.png'),
     );

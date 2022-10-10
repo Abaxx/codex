@@ -1,5 +1,9 @@
 
 
+import 'dart:html';
+import 'dart:typed_data';
+
+import 'package:appwrite/appwrite.dart';
 import 'package:flutter/material.dart';
 import 'package:nextcode/Home.dart';
 
@@ -14,7 +18,7 @@ class ContactPage extends StatelessWidget {
     return LayoutBuilder(builder: (context,constraints){
       if(constraints.biggest.width > 800){
         return Scaffold(
-            body:  SingleChildScrollView(child: Column(children: const [Nav(),ContactForm(),Footer()],))
+            body:  SingleChildScrollView(child: Column(children: [Nav(),ContactForm(),Footer()],))
         );
       }else{
         return Scaffold(
@@ -25,7 +29,7 @@ class ContactPage extends StatelessWidget {
               centerTitle: true,
             ),
             drawer: createDrawer(context),
-            body:  SingleChildScrollView(child: Column(children: const [Nav(),ContactForm(),Footer()],))
+            body:  SingleChildScrollView(child: Column(children: [Nav(),ContactForm(),Footer()],))
         );
       }
     });
@@ -33,7 +37,8 @@ class ContactPage extends StatelessWidget {
 }
 
 class ContactForm extends StatelessWidget {
-  const ContactForm({Key? key}) : super(key: key);
+
+  ContactForm({Key? key}) : super(key: key);
 
 
   // contents of contact

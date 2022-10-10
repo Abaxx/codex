@@ -1,5 +1,8 @@
 
 
+import 'dart:typed_data';
+
+import 'package:appwrite/appwrite.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:nextcode/NavBar.dart';
@@ -8,9 +11,11 @@ import 'About.dart';
 import 'Home.dart';
 
 class NewsDetailPage extends StatelessWidget {
-  var title,img,detail;
+  
+  var title,imageId,detail;
+  Storage storage;
 
-  NewsDetailPage(this.title,this.img,this.detail);
+  NewsDetailPage(this.title,this.imageId,this.detail,this.storage);
 
   @override
   Widget build(BuildContext context) {
@@ -18,7 +23,7 @@ class NewsDetailPage extends StatelessWidget {
       if(constraints.biggest.width > 800){
         //Desktop view
         return Scaffold(
-            body:  SingleChildScrollView(child: Column(children: [const Nav(),NewsDetail(title,img,detail),const Footer()],))
+            body:  SingleChildScrollView(child: Column(children: [const Nav(),NewsDetail(title,imageId,detail,storage),const Footer()],))
         );
       }else{ // Mobile View
         return Scaffold(
@@ -29,7 +34,7 @@ class NewsDetailPage extends StatelessWidget {
               centerTitle: true,
             ),
             drawer: createDrawer(context),
-            body:  SingleChildScrollView(child: Column(children: [const Nav(),NewsDetail(title,img,detail),const Footer()],))
+            body:  SingleChildScrollView(child: Column(children: [const Nav(),NewsDetail(title,imageId,detail,storage),const Footer()],))
         );
       }
     });
@@ -37,9 +42,12 @@ class NewsDetailPage extends StatelessWidget {
 }
 
 class NewsDetail extends StatelessWidget {
-  var title,img,detail;
 
-  NewsDetail(this.title,this.img,this.detail);
+  var title,imageId,detail;
+
+  Storage storage;
+
+  NewsDetail(this.title,this.imageId,this.detail,this.storage);
 
   newsDetail()
   {
@@ -47,8 +55,17 @@ class NewsDetail extends StatelessWidget {
       padding: const EdgeInsets.symmetric(vertical: 20,horizontal: 40),
       child: Column(
         children: [
-          Image.asset(img,height: 200,width: 300,fit: BoxFit.fill,),
-          Text(title,style: TextStyle(color: Colors.black,fontWeight: FontWeight.bold,fontSize: 20),),
+          FutureBuilder(future: storage.getFilePreview(bucketId: "63415094ef991df505b4",fileId: imageId,
+          ), builder: (context,snapshot){
+            return snapshot.hasData && snapshot.data != null
+            ? Container(
+              height: 200, 
+              width: 300, 
+              decoration: BoxDecoration(
+                image: DecorationImage(image: MemoryImage(snapshot.data as Uint8List),fit: BoxFit.fill)
+              )) : const CircularProgressIndicator();
+          }),
+          Text(title,style: TextStyle(color: Colors.black,fontWeight: FontWeight.bold,fontSize: 25),),
           Text("""dsjfj dd sljfkjsdkljflkjsdlkfjkljjksldkjfk lsjfljkjuiukjalsdjklfjdskljfdskfjlkjdsklfjlkdsjfkjljsdjflksdjlfkjksdjlfjds
           klsjdkfjdsk flkjsdlkjflkjsdkjflj lksjdfkjiowefksd lkjsdkjfsd lksjdklfjsd klsdjlkfjskldfjsdlkjflks lksjdlkjfskdjfksdjf lksdjfsdfj
           klsdjfkj lkjsdklfjioeurnsdafiuoiwe sdfoiewquruyrhtf asdfadsjfhewi jasdfhjhsadf kjsalkdjfksd flkjsdf lkjklfjasdlk;jfkljl ljlksdjfks""")
