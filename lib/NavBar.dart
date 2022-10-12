@@ -2,11 +2,11 @@
 
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
-import 'package:nextcode/About.dart';
-import 'package:nextcode/Events.dart';
-import 'package:nextcode/Home.dart';
-import 'package:nextcode/News.dart';
-import 'package:nextcode/TechTalk.dart';
+import 'package:codex/About.dart';
+import 'package:codex/Events.dart';
+import 'package:codex/Home.dart';
+import 'package:codex/News.dart';
+import 'package:codex/CodeTalk.dart';
 
 class Navbar extends StatelessWidget {
   const Navbar({Key? key}) : super(key: key);
@@ -69,9 +69,9 @@ class _DesktopNavbarState extends State<DesktopNavbar> {
                   navBarColorChange(Colors.white, const Color(0xff5092EF), Colors.white, Colors.white, Colors.white);
             }),),
             const SizedBox(width: 20),
-            RichText(text: TextSpan(text: 'TechTalk',style: TextStyle(color: techtalk_color,fontSize: 20),
+            RichText(text: TextSpan(text: 'CodeTalk',style: TextStyle(color: techtalk_color,fontSize: 20),
                 recognizer: TapGestureRecognizer()..onTap = (){
-                  Navigator.push(context, MaterialPageRoute(builder: (context)=> const TechTalkPage()),);
+                  Navigator.push(context, MaterialPageRoute(builder: (context)=> const CodeTalkPage()),);
                   navBarColorChange(Colors.white, Colors.white, const Color(0xff5092EF), Colors.white, Colors.white);}
             )),
             const SizedBox(width: 20),
@@ -105,8 +105,8 @@ Widget createDrawer(BuildContext context)
         ListTile(title: const Text('About',style: TextStyle(color: Colors.white,fontSize: 20)),onTap: (){
           Navigator.push(context, MaterialPageRoute(builder: (context)=> const AboutPage()),);
           },),
-        ListTile(title: const Text('TechTalk',style: TextStyle(color: Colors.white,fontSize: 20)),onTap: (){
-          Navigator.push(context, MaterialPageRoute(builder: (context)=> const TechTalkPage()),);
+        ListTile(title: const Text('CodeTalk',style: TextStyle(color: Colors.white,fontSize: 20)),onTap: (){
+          Navigator.push(context, MaterialPageRoute(builder: (context)=> const CodeTalkPage()),);
           },),
         ListTile(title: const Text('Events',style: TextStyle(color: Colors.white,fontSize: 20)),onTap: (){
           Navigator.push(context, MaterialPageRoute(builder: (context)=> const EventsPage()),);

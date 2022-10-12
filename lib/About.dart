@@ -1,8 +1,8 @@
 
 
 import 'package:flutter/material.dart';
-import 'package:nextcode/Home.dart';
-import 'package:nextcode/NavBar.dart';
+import 'package:codex/Home.dart';
+import 'package:codex/NavBar.dart';
 
 class AboutPage extends StatelessWidget {
   const AboutPage({Key? key}) : super(key: key);
@@ -13,7 +13,7 @@ class AboutPage extends StatelessWidget {
       if(constraints.biggest.width > 800){
         //Desktop view
         return Scaffold(
-            body:  SingleChildScrollView(child: Column(children: const [Nav(),AboutContent(),Footer()],))
+            body:  SingleChildScrollView(child: Column(children: const [Nav(),AboutContent(),FooterPage()],))
         );
       }else{ // Mobile View
         return Scaffold(
@@ -24,7 +24,7 @@ class AboutPage extends StatelessWidget {
               centerTitle: true,
             ),
             drawer: createDrawer(context),
-            body:  SingleChildScrollView(child: Column(children: const [Nav(),AboutContent(),Footer()],))
+            body:  SingleChildScrollView(child: Column(children: const [Nav(),AboutContent(),FooterPage()],))
         );
       }
     });

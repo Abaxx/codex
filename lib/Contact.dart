@@ -1,11 +1,6 @@
 
-
-import 'dart:html';
-import 'dart:typed_data';
-
-import 'package:appwrite/appwrite.dart';
 import 'package:flutter/material.dart';
-import 'package:nextcode/Home.dart';
+import 'package:codex/Home.dart';
 
 import 'About.dart';
 import 'NavBar.dart';
@@ -18,7 +13,7 @@ class ContactPage extends StatelessWidget {
     return LayoutBuilder(builder: (context,constraints){
       if(constraints.biggest.width > 800){
         return Scaffold(
-            body:  SingleChildScrollView(child: Column(children: [Nav(),ContactForm(),Footer()],))
+            body:  SingleChildScrollView(child: Column(children: [Nav(),ContactForm(),FooterPage()],))
         );
       }else{
         return Scaffold(
@@ -29,7 +24,7 @@ class ContactPage extends StatelessWidget {
               centerTitle: true,
             ),
             drawer: createDrawer(context),
-            body:  SingleChildScrollView(child: Column(children: [Nav(),ContactForm(),Footer()],))
+            body:  SingleChildScrollView(child: Column(children: [Nav(),ContactForm(),FooterPage()],))
         );
       }
     });

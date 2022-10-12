@@ -1,11 +1,12 @@
 
+import 'package:appwrite/appwrite.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:nextcode/About.dart';
-import 'package:nextcode/Contact.dart';
-import 'package:nextcode/Join.dart';
-import 'package:nextcode/NavBar.dart';
+import 'package:codex/About.dart';
+import 'package:codex/Contact.dart';
+import 'package:codex/Join.dart';
+import 'package:codex/NavBar.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class HomePage extends StatelessWidget {
@@ -17,7 +18,7 @@ class HomePage extends StatelessWidget {
       if(constraints.biggest.width > 800){
         // Desktop View
         return Scaffold(
-            body:  SingleChildScrollView(child: Column(children: const [HeroSection(),ProgramSection(),TechTalkSection(),SponsorshipSection(),Footer()],))
+            body:  SingleChildScrollView(child: Column(children: const [HeroSection(),ProgramSection(),CodeTalkSection(),SponsorshipSection(),FooterPage()],))
         );
       }else{ //Mobile View
         return Scaffold(
@@ -26,7 +27,7 @@ class HomePage extends StatelessWidget {
             centerTitle: true,
           ),
             drawer: createDrawer(context),
-            body:  SingleChildScrollView(child: Column(children: const [HeroSection(),ProgramSection(),TechTalkSection(),SponsorshipSection(),Footer()],))
+            body:  SingleChildScrollView(child: Column(children: const [HeroSection(),ProgramSection(),CodeTalkSection(),SponsorshipSection(),FooterPage()],))
         );
       }
     });
@@ -44,8 +45,9 @@ class HeroSection extends StatelessWidget {
         Padding(padding: const EdgeInsets.only(top: 10),child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [Column(
-            children: [const Text('NEXTCODE\n AFRICA\n 2023',
-              style: TextStyle(color: Colors.white,fontWeight: FontWeight.bold,fontSize: 45),textAlign: TextAlign.center,),
+            children: [RichText(text: const TextSpan(text:'CODE',style: TextStyle(color: Colors.white,fontWeight: FontWeight.bold,fontSize: 45,fontFamily: "Poppins"),
+              children: [TextSpan(text: 'X',style: TextStyle(color: Colors.white,fontWeight: FontWeight.bold,fontSize: 60))]),textAlign: TextAlign.center,),
+              const Text("AFRICA\n 2023",style: TextStyle(color: Colors.white,fontWeight: FontWeight.bold,fontSize: 45,),textAlign: TextAlign.center,),
               MaterialButton(onPressed: (){
                 //url to join Nextcode Africa 2023
                 final url = Uri.parse("https://docs.google.com/forms/d/e/1FAIpQLSf6YFtYlzg_CtzK_X4FfMws8EtR5C0l6BBT09IG-Pd3uc0vjA/viewform?usp=sf_link");
@@ -63,10 +65,14 @@ class HeroSection extends StatelessWidget {
       children: [const Text('African Technology Distrupt',style: TextStyle(color: Colors.white,fontWeight: FontWeight.bold,fontSize: 25),),
         Column(
             children: [const SizedBox(height: 10,),
-              const Text('NEXTCODE\n AFRICA\n 2023',
-              style: TextStyle(color: Colors.white,fontWeight: FontWeight.bold,fontSize: 25),textAlign: TextAlign.center,),
+              RichText(text: const TextSpan(text:'CODE',style: TextStyle(color: Colors.white,fontWeight: FontWeight.bold,fontSize: 30,fontFamily: "Poppins"),
+              children: [TextSpan(text: 'X',style: TextStyle(color: Colors.white,fontWeight: FontWeight.bold,fontSize: 40))]),textAlign: TextAlign.center,),
+              const Text("AFRICA\n 2023",style: TextStyle(color: Colors.white,fontWeight: FontWeight.bold,fontSize: 30),textAlign: TextAlign.center,),
               const SizedBox(height: 5,),
-              MaterialButton(onPressed: (){},color: const Color(0xff5092EF),
+              MaterialButton(onPressed: (){//url to join Nextcode Africa 2023
+                final url = Uri.parse("https://docs.google.com/forms/d/e/1FAIpQLSf6YFtYlzg_CtzK_X4FfMws8EtR5C0l6BBT09IG-Pd3uc0vjA/viewform?usp=sf_link");
+                launchUrl(url);
+                },color: const Color(0xff5092EF),
                 shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
                 child: const Text('Join',style: TextStyle(color: Colors.white),),),
               const SizedBox(height: 20,),],),
@@ -121,11 +127,11 @@ class ProgramSection extends StatelessWidget {
           children: [const SizedBox(height: 10,),
             Row(children: [Image.asset('assets/images/arrow.png',height: 20,width: 20,),const Text(' BLACK DEVELOPERS CONFERENCE',style: TextStyle(color: Colors.white,fontFamily: 'Poppins-SemiBold',fontSize: 15),)]),
             const SizedBox(height: 10,),
-            Row(children: [Image.asset('assets/images/arrow.png',height: 20,width: 20,),const Text(' NEXTCODE EVOLUTION',style: TextStyle(color: Colors.white,fontFamily: 'Poppins-SemiBold',fontSize: 15),),]),
+            Row(children: [Image.asset('assets/images/arrow.png',height: 20,width: 20,),const Text(' CODEX EVOLUTION',style: TextStyle(color: Colors.white,fontFamily: 'Poppins-SemiBold',fontSize: 15),),]),
             const SizedBox(height: 10,),
-            Row(children: [Image.asset('assets/images/arrow.png',height: 20,width: 20,),const Text(' NEXTCODE HACKATHON {NEXTHACK}',style: TextStyle(color: Colors.white,fontFamily: 'Poppins-SemiBold',fontSize: 15),),]),
+            Row(children: [Image.asset('assets/images/arrow.png',height: 20,width: 20,),const Text(' CODEX HACKATHON',style: TextStyle(color: Colors.white,fontFamily: 'Poppins-SemiBold',fontSize: 15),),]),
             const SizedBox(height: 10,),
-            Row(children: [Image.asset('assets/images/arrow.png',height: 20,width: 20,),const Text(' NEXTCODE EXTREME',style: TextStyle(color: Colors.white,fontFamily: 'Poppins-SemiBold',fontSize: 15),),]),]
+            Row(children: [Image.asset('assets/images/arrow.png',height: 20,width: 20,),const Text(' CODEX EXTREME',style: TextStyle(color: Colors.white,fontFamily: 'Poppins-SemiBold',fontSize: 15),),]),]
         )],
       ),
     );
@@ -149,8 +155,8 @@ class ProgramSection extends StatelessWidget {
   }
 }
 
-class TechTalkSection extends StatelessWidget {
-  const TechTalkSection({Key? key}) : super(key: key);
+class CodeTalkSection extends StatelessWidget {
+  const CodeTalkSection({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -194,14 +200,46 @@ class SponsorshipSection extends StatelessWidget {
   }
 }
 
-class Footer extends StatelessWidget {
-  const Footer({Key? key}) : super(key: key);
+class FooterPage extends StatefulWidget {
+  const FooterPage({Key? key}) : super(key: key);
+
+  @override
+  FooterPageState createState() => FooterPageState();
+}
+
+class FooterPageState extends State<FooterPage> {
+
+  // Appwrite database access
+  late Client client;
+  late Databases databases;
+
+  @override
+  initState(){
+    super.initState();
+
+    client = Client().setEndpoint('https://localhost/v1').setProject('63468ba24e873103160d');
+    databases = Databases(client);
+    
+  }
+
+// Adding subscribers email addresses to database
+  void createData(String email_address) async {
+    try {
+      await databases.createDocument(
+        databaseId: '63468c4d5ed960c512ab', collectionId: '63469da50cd4db5f796f',documentId: 'unique()',data: {'Emails': email_address});
+      
+    } on AppwriteException catch(e) {
+      print(e.message);
+    }
+
+  }
   
-  Column leftContents(BuildContext context,CrossAxisAlignment alignment,bool x)
+  Column leftContents(BuildContext context,CrossAxisAlignment alignment,bool mobileView)
   {
-    String txt='NEXTCODE';
-    if(x==false){
-      txt = '';
+    Widget textWidget = RichText(text: const TextSpan(text:'CODE',style: TextStyle(color: Colors.white,fontWeight: FontWeight.bold,fontSize: 30,fontFamily: "Poppins"),
+              children: [TextSpan(text: 'X',style: TextStyle(color: Colors.white,fontWeight: FontWeight.bold,fontSize: 40))]),);
+    if(mobileView == false){
+      textWidget= Text("");
     }
     return Column(
       crossAxisAlignment: alignment,
@@ -215,19 +253,24 @@ class Footer extends StatelessWidget {
         const SizedBox(height: 15,),
         RichText(text: const TextSpan(text: 'Sponsors',style: TextStyle(color: Colors.white),)),
         const SizedBox(height: 30,),
-        Text(txt,style: const TextStyle(color: Colors.white,fontSize: 30,fontWeight: FontWeight.bold),),],
+        textWidget,],
     );
   }
 
   Column centerContents(BuildContext context,double size)
   {
+    final emailController = TextEditingController();
     return Column(
       children: [const Text('Join Our Newsletter',style: TextStyle(color: Colors.white,fontWeight: FontWeight.bold,fontSize: 20),),
         const SizedBox(height: 5,),
         SizedBox(width: size * MediaQuery.of(context).size.width,
-          child: const TextField(decoration: InputDecoration(labelText: 'Your Email',fillColor: Colors.white,filled: true,),),),
+          child: TextField(
+            decoration: const InputDecoration(
+              labelText: 'Your Email',fillColor: Colors.white,filled: true,),
+              controller: emailController,
+              ), ),
         const SizedBox(height: 10,),
-      MaterialButton(onPressed: (){},color: const Color(0xff5092EF),
+      MaterialButton(onPressed: (){createData(emailController.text);},color: const Color(0xff5092EF),
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(5)),
         child: const Text('Subscribe',style: TextStyle(color: Colors.white,fontStyle: FontStyle.normal),),),
         const SizedBox(height: 30,),],
@@ -252,9 +295,9 @@ class Footer extends StatelessWidget {
         const SizedBox(height: 10,),
         Row(
           mainAxisAlignment: MainAxisAlignment.center,
-            children: const [FaIcon(FontAwesomeIcons.envelope,color: Colors.white,size: 15,),Text('  hello@nextcodeafrica.com',style: TextStyle(color: Colors.white),),]),
+            children: const [FaIcon(FontAwesomeIcons.envelope,color: Colors.white,size: 15,),Text('  hello@codexafrica.com',style: TextStyle(color: Colors.white),),]),
         const SizedBox(height: 50,),
-        const Text('\u00a9 2022 NEXTCODE AFRICA',style: TextStyle(color: Colors.white,fontSize: 15),),],
+        const Text('\u00a9 2022 CODEX AFRICA',style: TextStyle(color: Colors.white,fontSize: 15),),],
     );
   }
   @override

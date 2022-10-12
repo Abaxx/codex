@@ -1,12 +1,11 @@
 
-
 import 'package:flutter/material.dart';
-import 'package:nextcode/Home.dart';
+import 'package:codex/Home.dart';
 
 import 'NavBar.dart';
 
-class TechTalkPage extends StatelessWidget {
-  const TechTalkPage({Key? key}) : super(key: key);
+class CodeTalkPage extends StatelessWidget {
+  const CodeTalkPage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -14,7 +13,7 @@ class TechTalkPage extends StatelessWidget {
       if(constraints.biggest.width > 800){
         // Desktop view of Techtalk
         return Scaffold(
-            body:  SingleChildScrollView(child: Column(children: const [Nav(),Header(),TechTalkSection(),Footer()],))
+            body:  SingleChildScrollView(child: Column(children: const [Nav(),Header(),CodeTalkSection(),FooterPage()],))
         );
       }else{
         //Mobile View of Techtalk
@@ -26,7 +25,7 @@ class TechTalkPage extends StatelessWidget {
               centerTitle: true,
             ),
             drawer: createDrawer(context),
-            body:  SingleChildScrollView(child: Column(children: const [Nav(),Header(),TechTalkSection(),Footer()],))
+            body:  SingleChildScrollView(child: Column(children: const [Nav(),Header(),CodeTalkSection(),FooterPage()],))
         );
       }
     });
@@ -75,8 +74,8 @@ class Header extends StatelessWidget {
   }
 }
 
-class TechTalkSection extends StatelessWidget {
-  const TechTalkSection({Key? key}) : super(key: key);
+class CodeTalkSection extends StatelessWidget {
+  const CodeTalkSection({Key? key}) : super(key: key);
 
   desktopView(BuildContext context)
   {

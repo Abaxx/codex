@@ -1,4 +1,4 @@
-# NEXTCODE AFRICA
+# CODEX AFRICA
 
 Deep Technology Platform for Africans
 

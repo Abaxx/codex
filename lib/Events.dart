@@ -1,6 +1,6 @@
 
 import 'package:flutter/material.dart';
-import 'package:nextcode/Home.dart';
+import 'package:codex/Home.dart';
 
 import 'About.dart';
 import 'NavBar.dart';
@@ -14,7 +14,7 @@ class EventsPage extends StatelessWidget {
       if(constraints.biggest.width > 800){
         // Desktop View
         return Scaffold(
-            body:  SingleChildScrollView(child: Column(children: const [Nav(),Events(),Footer()],))
+            body:  SingleChildScrollView(child: Column(children: const [Nav(),Events(),FooterPage()],))
         );
       }else{ // Mobile View
         return Scaffold(
@@ -25,7 +25,7 @@ class EventsPage extends StatelessWidget {
               centerTitle: true,
             ),
             drawer: createDrawer(context),
-            body:  SingleChildScrollView(child: Column(children: const [Nav(),Events(),Footer()],))
+            body:  SingleChildScrollView(child: Column(children: const [Nav(),Events(),FooterPage()],))
         );
       }
     });
@@ -48,7 +48,7 @@ class DesktopView extends StatelessWidget {
   {
     return Row(
       mainAxisAlignment: MainAxisAlignment.end,
-      children: [Column(children: const [Text('NEXTCODE EVOLUTION',style: TextStyle(color: Colors.white,fontWeight: FontWeight.bold),),
+      children: [Column(children: const [Text('CODEX EVOLUTION',style: TextStyle(color: Colors.white,fontWeight: FontWeight.bold),),
         Text('A challenge for early stage tech start-ups ',style: TextStyle(color: Colors.white),)]),
         Image.asset('assets/images/evolution.png',height: 400,width: 400,)],
     );
@@ -58,7 +58,7 @@ class DesktopView extends StatelessWidget {
   {
     return Row(
       mainAxisAlignment: MainAxisAlignment.start,
-      children: [Image.asset('assets/images/extreme.png',height: 400,width: 400,),Column(children: const [Text(' NEXTCODE EXTREME',style: TextStyle(color: Colors.white,fontWeight: FontWeight.bold),),
+      children: [Image.asset('assets/images/extreme.png',height: 400,width: 400,),Column(children: const [Text(' CODEX EXTREME',style: TextStyle(color: Colors.white,fontWeight: FontWeight.bold),),
         Text(' A challenge for African developers to solve complex software problems ',style: TextStyle(color: Colors.white),)]),],
     );
   }
@@ -67,7 +67,7 @@ class DesktopView extends StatelessWidget {
   {
     return Row(
       mainAxisAlignment: MainAxisAlignment.end,
-      children: [Column(children: const [Text('NEXTHACK',style: TextStyle(color: Colors.white,fontWeight: FontWeight.bold),),
+      children: [Column(children: const [Text('CODEX HACKATHON',style: TextStyle(color: Colors.white,fontWeight: FontWeight.bold),),
         Text('A hackathon for new deep tech ideas to be developed ',style: TextStyle(color: Colors.white),)]),
         Image.asset('assets/images/hackathon.png',height: 400,width: 400,)],
     );
@@ -109,7 +109,7 @@ class MobileView extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.end,
       children: [Image.asset('assets/images/evolution.png',height: 200,width: 200,fit: BoxFit.fill,),
         const SizedBox(height: 5,),
-        Column(children: const [Text('NEXTCODE EVOLUTION',style: TextStyle(color: Colors.white,fontWeight: FontWeight.bold),),
+        Column(children: const [Text('CODEX EVOLUTION',style: TextStyle(color: Colors.white,fontWeight: FontWeight.bold),),
         Text('A challenge for early stage tech start-ups',style: TextStyle(color: Colors.white),textAlign: TextAlign.center,)]),],
     );
   }
@@ -120,7 +120,7 @@ class MobileView extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.start,
       children: [Image.asset('assets/images/extreme.png',height: 200,width: 200,fit: BoxFit.fill,),
         const SizedBox(height: 5,),
-        Column(children: const [Text(' NEXTCODE EXTREME',style: TextStyle(color: Colors.white,fontWeight: FontWeight.bold),),
+        Column(children: const [Text(' CODEX EXTREME',style: TextStyle(color: Colors.white,fontWeight: FontWeight.bold),),
         Text('A challenge for African developers to solve complex software problems',style: TextStyle(color: Colors.white),textAlign: TextAlign.center,)]),],
     );
   }
@@ -131,7 +131,7 @@ class MobileView extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.end,
       children: [Image.asset('assets/images/hackathon.png',height: 200,width: 200,fit: BoxFit.fill,),
         const SizedBox(height: 5,),
-        Column(children: const [Text('NEXTCODE HACKATHON',style: TextStyle(color: Colors.white,fontWeight: FontWeight.bold),),
+        Column(children: const [Text('CODEX HACKATHON',style: TextStyle(color: Colors.white,fontWeight: FontWeight.bold),),
         Text('A challenge for new deep tech ideas to be developed',style: TextStyle(color: Colors.white),textAlign: TextAlign.center,)]),],
     );
   }

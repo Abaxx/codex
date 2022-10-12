@@ -4,8 +4,7 @@ import 'dart:typed_data';
 
 import 'package:appwrite/appwrite.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
-import 'package:nextcode/NavBar.dart';
+import 'package:codex/NavBar.dart';
 
 import 'About.dart';
 import 'Home.dart';
@@ -23,7 +22,7 @@ class NewsDetailPage extends StatelessWidget {
       if(constraints.biggest.width > 800){
         //Desktop view
         return Scaffold(
-            body:  SingleChildScrollView(child: Column(children: [const Nav(),NewsDetail(title,imageId,detail,storage),const Footer()],))
+            body:  SingleChildScrollView(child: Column(children: [const Nav(),NewsDetail(title,imageId,detail,storage),const FooterPage()],))
         );
       }else{ // Mobile View
         return Scaffold(
@@ -34,7 +33,7 @@ class NewsDetailPage extends StatelessWidget {
               centerTitle: true,
             ),
             drawer: createDrawer(context),
-            body:  SingleChildScrollView(child: Column(children: [const Nav(),NewsDetail(title,imageId,detail,storage),const Footer()],))
+            body:  SingleChildScrollView(child: Column(children: [const Nav(),NewsDetail(title,imageId,detail,storage),const FooterPage()],))
         );
       }
     });
@@ -55,7 +54,7 @@ class NewsDetail extends StatelessWidget {
       padding: const EdgeInsets.symmetric(vertical: 20,horizontal: 40),
       child: Column(
         children: [
-          FutureBuilder(future: storage.getFilePreview(bucketId: "63415094ef991df505b4",fileId: imageId,
+          FutureBuilder(future: storage.getFilePreview(bucketId: "63468fe74658c4b59a87",fileId: imageId,
           ), builder: (context,snapshot){
             return snapshot.hasData && snapshot.data != null
             ? Container(
@@ -65,7 +64,7 @@ class NewsDetail extends StatelessWidget {
                 image: DecorationImage(image: MemoryImage(snapshot.data as Uint8List),fit: BoxFit.fill)
               )) : const CircularProgressIndicator();
           }),
-          Text(title,style: TextStyle(color: Colors.black,fontWeight: FontWeight.bold,fontSize: 25),),
+          Text(title,style: TextStyle(color: Colors.black,fontWeight: FontWeight.bold,fontSize: 30),textAlign: TextAlign.center,),
           Text("""dsjfj dd sljfkjsdkljflkjsdlkfjkljjksldkjfk lsjfljkjuiukjalsdjklfjdskljfdskfjlkjdsklfjlkdsjfkjljsdjflksdjlfkjksdjlfjds
           klsjdkfjdsk flkjsdlkjflkjsdkjflj lksjdfkjiowefksd lkjsdkjfsd lksjdklfjsd klsdjlkfjskldfjsdlkjflks lksjdlkjfskdjfksdjf lksdjfsdfj
           klsdjfkj lkjsdklfjioeurnsdafiuoiwe sdfoiewquruyrhtf asdfadsjfhewi jasdfhjhsadf kjsalkdjfksd flkjsdf lkjklfjasdlk;jfkljl ljlksdjfks""")

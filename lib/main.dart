@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:nextcode/Home.dart';
+import 'package:codex/Home.dart';
 void main() {
   runApp(const MyApp());
 }
@@ -11,7 +11,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'NEXTCODE AFRICA',
+      title: 'CODEX AFRICA',
       theme: ThemeData(fontFamily: "Poppins",
         // This is the theme of your application.
         //
