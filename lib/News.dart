@@ -27,11 +27,11 @@ class NewsPageState extends State<NewsPage> {
   initState(){
     super.initState();
 
-    client = Client().setEndpoint("https://localhost/v1").setProject("34d22bfbab52658bf76");
-    databases = Databases(client);
-    storage = Storage(client);
+    //client = Client().setEndpoint("https://localhost/v1").setProject("34d22bfbab52658bf76");
+    //databases = Databases(client);
+    //storage = Storage(client);
     
-    loadData();
+    //loadData();
   }
 
 // Extract datas from appwrite database
@@ -43,7 +43,7 @@ class NewsPageState extends State<NewsPage> {
         length = newslist.length;
         });
     } on AppwriteException catch(e) {
-      print(e.message);
+      //print(e.message);
     }
 
   }

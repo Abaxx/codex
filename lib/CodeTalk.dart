@@ -67,8 +67,11 @@ class Header extends StatelessWidget {
       ),
       child: LayoutBuilder(builder: (context,constraints){
         if(constraints.biggest.width > 800){
-          return const Center(child: Text('Deep talk about technology in Africa.',style: TextStyle(color: Colors.white,fontWeight: FontWeight.bold,fontSize: 30),),);
-        }else { return const Center(child: Text('Deep talk about technology in Africa.',style: TextStyle(color: Colors.white,fontWeight: FontWeight.bold,),),);}
+          return const Center(
+            child: Text('Deep talk about Technology in Africa.',style: TextStyle(color: Colors.white,fontWeight: FontWeight.bold,fontSize: 30),),);
+        }else { 
+          return const Center(
+            child: Text('Deep talk about Technology in Africa.',style: TextStyle(color: Colors.white,fontWeight: FontWeight.bold,fontSize: 20),textAlign: TextAlign.center,),);}
       }),
     );
   }

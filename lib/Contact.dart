@@ -18,7 +18,7 @@ class ContactPage extends StatelessWidget {
       }else{
         return Scaffold(
             appBar: AppBar(
-              title: GestureDetector(child: Image.asset('assets/images/Logo.png',height: 80,width: 80,),onTap: (){
+              title: GestureDetector(child: Image.asset('assets/images/Logo.png',height: 70,width: 80,),onTap: (){
                 Navigator.push(context, MaterialPageRoute(builder: (context)=> const HomePage()),);
               },),
               centerTitle: true,
