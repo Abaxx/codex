@@ -57,18 +57,18 @@ class Header extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 300,
+      height: 270,
       width: MediaQuery.of(context).size.width,
       decoration: const BoxDecoration(
         image: DecorationImage(
-          image: AssetImage('assets/images/techtalk_header.png'),
+          image: AssetImage('assets/images/codetalk_header.png'),
           fit: BoxFit.fill
         )
       ),
       child: LayoutBuilder(builder: (context,constraints){
         if(constraints.biggest.width > 800){
           return const Center(child: Text('Deep talk about technology in Africa.',style: TextStyle(color: Colors.white,fontWeight: FontWeight.bold,fontSize: 30),),);
-        }else { return const Center(child: Text('Deep talk about technology in Africa.',style: TextStyle(color: Colors.white,fontWeight: FontWeight.bold,fontSize: 20),),);}
+        }else { return const Center(child: Text('Deep talk about technology in Africa.',style: TextStyle(color: Colors.white,fontWeight: FontWeight.bold,),),);}
       }),
     );
   }
@@ -90,7 +90,7 @@ class CodeTalkSection extends StatelessWidget {
       ),
       padding: const EdgeInsets.symmetric(vertical: 150,horizontal: 150),
       child: Column(
-        children: [Image.asset('assets/images/techtalk.png',),
+        children: [Image.asset('assets/images/codetalk.png',),
           const SizedBox(height: 150),
           Image.asset('assets/images/techtalk2.png',)],),
     );
@@ -109,7 +109,7 @@ class CodeTalkSection extends StatelessWidget {
       ),
       padding: const EdgeInsets.symmetric(vertical: 50,horizontal: 50),
       child: Column(
-        children: [Image.asset('assets/images/techtalk.png',),
+        children: [Image.asset('assets/images/codetalk.png',),
           const SizedBox(height: 50),
           Image.asset('assets/images/techtalk2.png',)],),
     );

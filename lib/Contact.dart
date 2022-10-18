@@ -37,7 +37,7 @@ class ContactForm extends StatelessWidget {
 
 
   // contents of contact
-  contents(BuildContext context)
+  contents(BuildContext context, double size)
   {
     return Column(
       children: [
@@ -47,27 +47,27 @@ class ContactForm extends StatelessWidget {
           children: [
             const SizedBox(height: 30,),
             const Text('First Name',style: TextStyle(color: Color(0xff40454A),)),
-            SizedBox(width: 0.5 * MediaQuery.of(context).size.width,
+            SizedBox(width: size * MediaQuery.of(context).size.width,
               child: TextField(decoration: InputDecoration(fillColor: Colors.white,filled: true,
                 border: OutlineInputBorder(borderSide: const BorderSide(width: 2),borderRadius: BorderRadius.circular(10)),),),),
             const SizedBox(height: 20,),
             const Text('Last Name',style: TextStyle(color: Color(0xff40454A),)),
-            SizedBox(width: 0.5 * MediaQuery.of(context).size.width,
+            SizedBox(width: size * MediaQuery.of(context).size.width,
               child: TextField(decoration: InputDecoration(fillColor: Colors.white,filled: true,
                 border: OutlineInputBorder(borderSide: const BorderSide(width: 2),borderRadius: BorderRadius.circular(10)),),),),
             const SizedBox(height: 20,),
             const Text('Email',style: TextStyle(color: Color(0xff40454A),)),
-            SizedBox(width: 0.5 * MediaQuery.of(context).size.width,
+            SizedBox(width: size * MediaQuery.of(context).size.width,
               child: TextField(decoration: InputDecoration(fillColor: Colors.white,filled: true,
                 border: OutlineInputBorder(borderSide: const BorderSide(width: 2),borderRadius: BorderRadius.circular(10)),),),),
             const SizedBox(height: 20,),
             const Text('Subject',style: TextStyle(color: Color(0xff40454A),)),
-            SizedBox(width: 0.5 * MediaQuery.of(context).size.width,
+            SizedBox(width: size * MediaQuery.of(context).size.width,
               child: TextField(decoration: InputDecoration(fillColor: Colors.white,filled: true,
                 border: OutlineInputBorder(borderSide: const BorderSide(width: 2),borderRadius: BorderRadius.circular(10)),),),),
             const SizedBox(height: 20,),
             const Text('Message',style: TextStyle(color: Color(0xff40454A),)),
-            SizedBox(width: 0.5 * MediaQuery.of(context).size.width,
+            SizedBox(width: size * MediaQuery.of(context).size.width,
               child: TextField(decoration: InputDecoration(fillColor: Colors.white,filled: true,
                 border: OutlineInputBorder(borderSide: const BorderSide(width: 2),borderRadius: BorderRadius.circular(10),),),maxLines: 15,),),
             const SizedBox(height: 20,),
@@ -80,12 +80,24 @@ class ContactForm extends StatelessWidget {
   }
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return LayoutBuilder(builder: (context,constraints){
+      if(constraints.biggest.width > 800){
+        return Container(
           //height: 300,
           width: MediaQuery.of(context).size.width,
           alignment: Alignment.center,
           padding: const EdgeInsets.symmetric(vertical: 30),
-          child: contents(context),
+          child: contents(context,0.5)
         );
+      }else {
+        return Container(
+          //height: 300,
+          width: MediaQuery.of(context).size.width,
+          alignment: Alignment.center,
+          padding: const EdgeInsets.symmetric(vertical: 30),
+          child: contents(context,0.8),
+        );
+         }
+    }); 
   }
 }

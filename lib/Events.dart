@@ -147,7 +147,7 @@ class MobileView extends StatelessWidget {
       ),
       padding: const EdgeInsets.symmetric(vertical: 50,horizontal: 20),
       child: Column(children: [const Text('UPCOMING EVENTS',style: TextStyle(color: Colors.white,fontWeight: FontWeight.bold,fontSize: 20),),
-        const SizedBox(height: 80,),
+        const SizedBox(height: 70,),
         blackDeveloper(),
         const SizedBox(height: 50,),
         nextcodeEvolution(),

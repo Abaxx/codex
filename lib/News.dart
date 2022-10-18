@@ -27,7 +27,7 @@ class NewsPageState extends State<NewsPage> {
   initState(){
     super.initState();
 
-    client = Client().setEndpoint('https://localhost/v1').setProject('63468ba24e873103160d');
+    client = Client().setEndpoint("https://localhost/v1").setProject("34d22bfbab52658bf76");
     databases = Databases(client);
     storage = Storage(client);
     
@@ -37,7 +37,7 @@ class NewsPageState extends State<NewsPage> {
 // Extract datas from appwrite database
   void loadData() async {
     try {
-      final res = await databases.listDocuments(databaseId: '63468c4d5ed960c512ab', collectionId: '63468c6e9407c4862ebe');
+      final res = await databases.listDocuments(databaseId: "634d234d8d4a80a2691f", collectionId: "634d2359e93f7024db25");
       setState(() {
         newslist = res.documents;
         length = newslist.length;
@@ -58,13 +58,13 @@ class NewsPageState extends State<NewsPage> {
     return GestureDetector(onTap: (){
       Navigator.push(context, MaterialPageRoute(
         builder: (context)=> NewsDetailPage(
-          newslist[index].data['title'],newslist[index].data["imageId"],newslist[index].data['detail'],storage)),);
+          newslist[index].data['title'],newslist[index].data["imageId"],newslist[index].data["detail"],storage)),);
     },
       child: Container(
         color: Colors.white,
         margin: const EdgeInsets.symmetric(vertical: 20),
         child: Row(children: [
-          FutureBuilder(future: storage.getFilePreview(bucketId: "63468fe74658c4b59a87",fileId: newslist[index].data["imageId"],
+          FutureBuilder(future: storage.getFilePreview(bucketId: "634d2562b19971ade545",fileId: newslist[index].data["imageId"],
           ), builder: (context,snapshot){
             return snapshot.hasData && snapshot.data != null
             ? Container(
@@ -81,8 +81,8 @@ class NewsPageState extends State<NewsPage> {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text(newslist[index].data['title'],style: const TextStyle(color: Colors.black, fontWeight: FontWeight.bold, fontSize: 20),),
-                Text(newslist[index].data['date'],style: TextStyle(fontSize: 10),),
+                Text(newslist[index].data["title"],style: const TextStyle(color: Colors.black, fontWeight: FontWeight.bold, fontSize: 20),),
+                Text(newslist[index].data["date"],style: TextStyle(fontSize: 10),),
               ],
             ),),
         ],),
@@ -99,7 +99,7 @@ class NewsPageState extends State<NewsPage> {
       Navigator.push(
         context, MaterialPageRoute(
           builder: (context)=> NewsDetailPage(
-            newslist[index].data['title'],newslist[index].data["imageId"],newslist[index].data['detail'],storage)),);
+            newslist[index].data["title"],newslist[index].data["imageId"],newslist[index].data["detail"],storage)),);
     },
       child: Container(
         color: Colors.white,
@@ -139,8 +139,14 @@ class NewsPageState extends State<NewsPage> {
         return Scaffold(
           backgroundColor: const Color(0xffEFEFEF),
           body: CustomScrollView(
-            slivers: [SliverToBoxAdapter(child: Column(children: const [Nav(),Header()],),),const SliverPadding(padding: EdgeInsets.only(top: 20)),
-              SliverList(delegate: SliverChildBuilderDelegate((BuildContext context,int index){
+            slivers: [
+              SliverToBoxAdapter(
+                child: Column(
+                  children: const [Nav(),Header()],),),
+                    /*const SliverPadding(
+                      padding: EdgeInsets.only(top: 20)),
+              SliverList(
+                delegate: SliverChildBuilderDelegate((BuildContext context,int index){
                 //algorithm for arrange custom view children in order
                 int a = 2 * index;
                 int b = 2 * index + 1;
@@ -148,10 +154,12 @@ class NewsPageState extends State<NewsPage> {
                   mainAxisAlignment: MainAxisAlignment.spaceAround,
                   children: [
                     deskTopNews(context,a),deskTopNews(context, b)],);
-              },childCount: length-2),),const SliverToBoxAdapter(child: FooterPage(),)],
+              },childCount: length-2),),
+              const SliverToBoxAdapter(child: FooterPage(),)*/],
           ),
         );
-      }else{// Mobile view
+      }else{
+        // Mobile view
         return Scaffold(
           backgroundColor: Color(0xffEFEFEF),
             appBar: AppBar(
@@ -162,15 +170,20 @@ class NewsPageState extends State<NewsPage> {
             ),
             drawer: createDrawer(context),
             body: CustomScrollView(
-              slivers: [SliverToBoxAdapter(child: Column(children: const [Nav(),Header()],),),const SliverPadding(padding: EdgeInsets.only(top: 20)),
-                SliverList(delegate: SliverChildBuilderDelegate((BuildContext context,int index){
+              slivers: [
+                SliverToBoxAdapter(
+                  child: Column(children: const [Nav(),Header()],),),
+                  /*const SliverPadding(padding: EdgeInsets.only(top: 20)),
+                SliverList(
+                  delegate: SliverChildBuilderDelegate((BuildContext context,int index){
                   return Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       mobileNews(context,index)
                     ],
                   );
-                },childCount: length),),const SliverToBoxAdapter(child: FooterPage(),)],
+                },childCount: length),),
+                const SliverToBoxAdapter(child: FooterPage(),)*/],
             ),
         );
       }

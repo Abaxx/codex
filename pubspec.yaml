@@ -71,11 +71,11 @@ flutter:
     - assets/images/developer.png
     - assets/images/africa_tech_map.png
     - assets/images/arrow.png
-    - assets/images/techtalk.png
+    - assets/images/codetalk.png
     - assets/images/sponsor.png
     - assets/images/navbar_background.png
     - assets/images/about_background.png
-    - assets/images/techtalk_header.png
+    - assets/images/codetalk_header.png
     - assets/images/techtalk2.png
     - assets/images/techtalk_background.png
     - assets/images/black_conf.png
@@ -106,6 +106,13 @@ flutter:
        - asset: assets/fonts/Poppins-Medium.ttf
        - asset: assets/fonts/Poppins-Regular.ttf
        - asset: assets/fonts/Poppins-SemiBold.ttf
+    - family: Teko
+      fonts:
+       - asset: assets/fonts/Teko-Bold.ttf
+       - asset: assets/fonts/Teko-Medium.ttf
+       - asset: assets/fonts/Teko-Light.ttf
+       - asset: assets/fonts/Teko-Regular.ttf
+
   #         style: italic
   #   - family: Trajan Pro
   #     fonts:
