@@ -32,7 +32,17 @@ class NewsPageState extends State<NewsPage> {
     //storage = Storage(client);
     
     //loadData();
+    _initData();
   }
+
+  _initData()
+  {
+    DefaultAssetBundle.of(context).loadString("json/info.json").then((value) {
+      info = json.decode(value);
+    });  
+  }
+
+  List info = [];
 
 // Extract datas from appwrite database
   void loadData() async {
@@ -55,16 +65,16 @@ class NewsPageState extends State<NewsPage> {
   deskTopNews(BuildContext context,int index) {
 
     double wdth = 0.2 * MediaQuery.of(context).size.width;
-    return GestureDetector(onTap: (){
+    return GestureDetector(/*onTap: (){
       Navigator.push(context, MaterialPageRoute(
         builder: (context)=> NewsDetailPage(
           newslist[index].data['title'],newslist[index].data["imageId"],newslist[index].data["detail"],storage)),);
-    },
+    },*/
       child: Container(
         color: Colors.white,
         margin: const EdgeInsets.symmetric(vertical: 20),
-        child: Row(children: [
-          FutureBuilder(future: storage.getFilePreview(bucketId: "634d2562b19971ade545",fileId: newslist[index].data["imageId"],
+        child: Row(children: [Image.asset(info[index]["img"],height: 200,width: wdth,fit: BoxFit.fill,),
+          /*FutureBuilder(future: storage.getFilePreview(bucketId: "634d2562b19971ade545",fileId: newslist[index].data["imageId"],
           ), builder: (context,snapshot){
             return snapshot.hasData && snapshot.data != null
             ? Container(
@@ -73,16 +83,16 @@ class NewsPageState extends State<NewsPage> {
               decoration: BoxDecoration(
                 image: DecorationImage(image: MemoryImage(snapshot.data as Uint8List),fit: BoxFit.fill)
               )) : const CircularProgressIndicator();
-          }),
+          }),*/
           const SizedBox(width: 5,),
           Container(
             alignment: Alignment.center,
             width: 0.2 * MediaQuery.of(context).size.width,
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(newslist[index].data["title"],style: const TextStyle(color: Colors.black, fontWeight: FontWeight.bold, fontSize: 20),),
-                Text(newslist[index].data["date"],style: TextStyle(fontSize: 10),),
+              children: [Text(info[index]['title'],style: TextStyle(color: Colors.black, fontWeight: FontWeight.bold, fontSize: 20),),
+                /*Text(newslist[index].data["title"],style: const TextStyle(color: Colors.black, fontWeight: FontWeight.bold, fontSize: 20),),
+                Text(newslist[index].data["date"],style: TextStyle(fontSize: 10),),*/
               ],
             ),),
         ],),
@@ -93,19 +103,20 @@ class NewsPageState extends State<NewsPage> {
   // News on mobile phone
   mobileNews(BuildContext context,int index) {
 
-    double wdth = 0.2 * MediaQuery.of(context).size.width;
+    double wdth = 0.25 * MediaQuery.of(context).size.width;
 
-    return GestureDetector(onTap: (){
+    return GestureDetector(/*onTap: (){
       Navigator.push(
         context, MaterialPageRoute(
           builder: (context)=> NewsDetailPage(
             newslist[index].data["title"],newslist[index].data["imageId"],newslist[index].data["detail"],storage)),);
-    },
+    },*/
       child: Container(
         color: Colors.white,
         margin: const EdgeInsets.only(bottom: 20),
-        child: Row(children: [
-          FutureBuilder(future: storage.getFilePreview(bucketId: "63468fe74658c4b59a87",fileId: newslist[index].data["imageId"],
+        width: 0.8 * MediaQuery.of(context).size.width,
+        child: Row(children: [Image.asset(info[index]["img"],height: 100,width: wdth,fit: BoxFit.fill,),
+          /*FutureBuilder(future: storage.getFilePreview(bucketId: "63468fe74658c4b59a87",fileId: newslist[index].data["imageId"],
          ), builder: (context,snapshot){
             return snapshot.hasData && snapshot.data != null
             ? Container(
@@ -114,16 +125,16 @@ class NewsPageState extends State<NewsPage> {
               decoration: BoxDecoration(
                 image: DecorationImage(image: MemoryImage(snapshot.data as Uint8List),fit: BoxFit.fill)))
                  : const CircularProgressIndicator();
-          }),
+          }),*/
           const SizedBox(width: 5,),
           Container(
             alignment: Alignment.center,
-            width: 0.3 * MediaQuery.of(context).size.width,
+            width: 0.5 * MediaQuery.of(context).size.width,
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(newslist[index].data['title'], style: const TextStyle(color: Colors.black, fontWeight: FontWeight.bold, fontSize: 17,),),
-                Text(newslist[index].data['date'],style: TextStyle(fontSize: 10),),
+              children: [Text(info[index]['title'],style: TextStyle(color: Colors.black, fontWeight: FontWeight.bold, fontSize: 20),),
+                /*Text(newslist[index].data['title'], style: const TextStyle(color: Colors.black, fontWeight: FontWeight.bold, fontSize: 17,),),
+                Text(newslist[index].data['date'],style: TextStyle(fontSize: 10),),*/
               ],
             ),)
         ],),
@@ -143,7 +154,7 @@ class NewsPageState extends State<NewsPage> {
               SliverToBoxAdapter(
                 child: Column(
                   children: const [Nav(),Header()],),),
-                    /*const SliverPadding(
+                    const SliverPadding(
                       padding: EdgeInsets.only(top: 20)),
               SliverList(
                 delegate: SliverChildBuilderDelegate((BuildContext context,int index){
@@ -154,8 +165,8 @@ class NewsPageState extends State<NewsPage> {
                   mainAxisAlignment: MainAxisAlignment.spaceAround,
                   children: [
                     deskTopNews(context,a),deskTopNews(context, b)],);
-              },childCount: length-2),),
-              const SliverToBoxAdapter(child: FooterPage(),)*/],
+              },childCount: (info.length.toDouble()/2).toInt()),),
+              const SliverToBoxAdapter(child: FooterPage(),)],
           ),
         );
       }else{
@@ -163,7 +174,8 @@ class NewsPageState extends State<NewsPage> {
         return Scaffold(
           backgroundColor: Color(0xffEFEFEF),
             appBar: AppBar(
-              title: GestureDetector(child: Image.asset('assets/images/Logo.png',height: 80,width: 80,),onTap: (){
+              title: GestureDetector(child: Image.asset('assets/images/Logo.png',height: 50,width: 80,),
+              onTap: (){
                 Navigator.push(context, MaterialPageRoute(builder: (context)=> const HomePage()),);
               },),
               centerTitle: true,
@@ -173,7 +185,7 @@ class NewsPageState extends State<NewsPage> {
               slivers: [
                 SliverToBoxAdapter(
                   child: Column(children: const [Nav(),Header()],),),
-                  /*const SliverPadding(padding: EdgeInsets.only(top: 20)),
+                  const SliverPadding(padding: EdgeInsets.only(top: 20)),
                 SliverList(
                   delegate: SliverChildBuilderDelegate((BuildContext context,int index){
                   return Row(
@@ -182,8 +194,8 @@ class NewsPageState extends State<NewsPage> {
                       mobileNews(context,index)
                     ],
                   );
-                },childCount: length),),
-                const SliverToBoxAdapter(child: FooterPage(),)*/],
+                },childCount: info.length),),
+                const SliverToBoxAdapter(child: FooterPage(),)],
             ),
         );
       }
@@ -203,8 +215,10 @@ class Header extends StatelessWidget {
       padding: const EdgeInsets.symmetric(vertical: 70),
       child: LayoutBuilder(builder: (context,constraints){
         if(constraints.biggest.width > 800){
-          return const Center( child: Text('Deep Technology News for Africa.',style: TextStyle(color: Colors.white,fontWeight: FontWeight.bold,fontSize: 30),),);
-        }else { return const Center(child: Text('Deep Technology News for Africa.',style: TextStyle(color: Colors.white,fontWeight: FontWeight.bold,fontSize: 20),),);}
+          return const Center( 
+            child: Text('Deep Technology News for Africa.',style: TextStyle(color: Colors.white,fontWeight: FontWeight.bold,fontSize: 30),),);
+        }else { return const Center(
+          child: Text('Deep Technology News for Africa.',style: TextStyle(color: Colors.white,fontWeight: FontWeight.bold,fontSize: 20),textAlign: TextAlign.center,),);}
       }),
     );
   }

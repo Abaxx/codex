@@ -23,7 +23,7 @@ class HomePage extends StatelessWidget {
       }else{ //Mobile View
         return Scaffold(
           appBar: AppBar(
-            title: Image.asset('assets/images/Logo.png',height: 70,width: 80,),
+            title: Image.asset('assets/images/Logo.png',height: 50,width: 80,),
             centerTitle: true,
           ),
             drawer: createDrawer(context),
@@ -199,7 +199,7 @@ class SponsorshipSection extends StatelessWidget {
       child: Column(
         children: [const Text('Sponsorships and partnerships',style: TextStyle(color: Colors.white,fontWeight: FontWeight.bold,fontSize: 18),),
           const SizedBox(height: 10,),
-          const Text('There are several opportunities for you to engage with attendees at each of our programs or events.',style: TextStyle(color: Colors.white,fontSize: 15),textAlign: TextAlign.center,),
+          const Text('There are several opportunities for you to engage with attendees at each of our programs or events.',style: TextStyle(color: Colors.white,fontSize: 15,fontFamily: "Poppins-SemiBold"),textAlign: TextAlign.center,),
           RichText(text: TextSpan(text:'Contact us ',style: const TextStyle(color: Color(0xff5092EF),fontStyle: FontStyle.italic,fontSize: 15),recognizer: TapGestureRecognizer()..onTap = (){
             Navigator.push(context, MaterialPageRoute(builder: (context)=> const ContactPage(),));},
               children: const [TextSpan(text: ' for more information.',style: TextStyle(color: Colors.white,fontStyle: FontStyle.normal))]),)],

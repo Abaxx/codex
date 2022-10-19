@@ -27,7 +27,8 @@ class NewsDetailPage extends StatelessWidget {
       }else{ // Mobile View
         return Scaffold(
             appBar: AppBar(
-              title: GestureDetector(child: Image.asset('assets/images/Logo.png',height: 80,width: 80,),onTap: (){
+              title: GestureDetector(child: Image.asset('assets/images/Logo.png',height: 50,width: 80,),
+              onTap: (){
                 Navigator.push(context, MaterialPageRoute(builder: (context)=> const HomePage()),);
               },),
               centerTitle: true,
