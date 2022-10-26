@@ -1,5 +1,4 @@
 import 'dart:convert';
-import 'dart:typed_data';
 
 import 'package:appwrite/appwrite.dart';
 import 'package:flutter/material.dart';
@@ -166,7 +165,7 @@ class NewsPageState extends State<NewsPage> {
                   children: [
                     deskTopNews(context,a),deskTopNews(context, b)],);
               },childCount: (info.length.toDouble()/2).toInt()),),
-              const SliverToBoxAdapter(child: FooterPage(),)],
+              const SliverToBoxAdapter(child: Footer(),)],
           ),
         );
       }else{
@@ -195,7 +194,7 @@ class NewsPageState extends State<NewsPage> {
                     ],
                   );
                 },childCount: info.length),),
-                const SliverToBoxAdapter(child: FooterPage(),)],
+                const SliverToBoxAdapter(child: Footer(),)],
             ),
         );
       }
@@ -216,9 +215,9 @@ class Header extends StatelessWidget {
       child: LayoutBuilder(builder: (context,constraints){
         if(constraints.biggest.width > 800){
           return const Center( 
-            child: Text('Deep Technology News for Africa.',style: TextStyle(color: Colors.white,fontWeight: FontWeight.bold,fontSize: 30),),);
+            child: Text('Deep Technology News in Africa.',style: TextStyle(color: Colors.white,fontWeight: FontWeight.bold,fontSize: 30),),);
         }else { return const Center(
-          child: Text('Deep Technology News for Africa.',style: TextStyle(color: Colors.white,fontWeight: FontWeight.bold,fontSize: 20),textAlign: TextAlign.center,),);}
+          child: Text('Deep Technology News in Africa.',style: TextStyle(color: Colors.white,fontWeight: FontWeight.bold,fontSize: 20),textAlign: TextAlign.center,),);}
       }),
     );
   }

@@ -14,7 +14,7 @@ class EventsPage extends StatelessWidget {
       if(constraints.biggest.width > 800){
         // Desktop View
         return Scaffold(
-            body:  SingleChildScrollView(child: Column(children: const [Nav(),Events(),FooterPage()],))
+            body:  SingleChildScrollView(child: Column(children: const [Nav(),Events(),Footer()],))
         );
       }else{ // Mobile View
         return Scaffold(
@@ -26,7 +26,7 @@ class EventsPage extends StatelessWidget {
               centerTitle: true,
             ),
             drawer: createDrawer(context),
-            body:  SingleChildScrollView(child: Column(children: const [Nav(),Events(),FooterPage()],))
+            body:  SingleChildScrollView(child: Column(children: const [Nav(),Events(),Footer()],))
         );
       }
     });

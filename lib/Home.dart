@@ -18,7 +18,7 @@ class HomePage extends StatelessWidget {
       if(constraints.biggest.width > 800){
         // Desktop View
         return Scaffold(
-            body:  SingleChildScrollView(child: Column(children: const [HeroSection(),ProgramSection(),CodeTalkSection(),SponsorshipSection(),FooterPage()],))
+            body:  SingleChildScrollView(child: Column(children: const [HeroSection(),ProgramSection(),CodeTalkSection(),SponsorshipSection(),Footer()],))
         );
       }else{ //Mobile View
         return Scaffold(
@@ -27,7 +27,7 @@ class HomePage extends StatelessWidget {
             centerTitle: true,
           ),
             drawer: createDrawer(context),
-            body:  SingleChildScrollView(child: Column(children: const [HeroSection(),ProgramSection(),CodeTalkSection(),SponsorshipSection(),FooterPage()],))
+            body:  SingleChildScrollView(child: Column(children: const [HeroSection(),ProgramSection(),CodeTalkSection(),SponsorshipSection(),Footer()],))
         );
       }
     });
@@ -222,14 +222,14 @@ class SponsorshipSection extends StatelessWidget {
   }
 }
 
-class FooterPage extends StatefulWidget {
-  const FooterPage({Key? key}) : super(key: key);
+class Footer extends StatefulWidget {
+  const Footer({Key? key}) : super(key: key);
 
   @override
-  FooterPageState createState() => FooterPageState();
+  FooterState createState() => FooterState();
 }
 
-class FooterPageState extends State<FooterPage> {
+class FooterState extends State<Footer> {
 
   // Appwrite database access
   late Client client;
@@ -282,8 +282,8 @@ validateEmail(String email){
       });
     }else{
       setState(() {
-        createData(email);
-        //message = "Sent Successful";
+        //createData(email);
+        message = "Not yet available";
       });
     }
   }
@@ -325,7 +325,8 @@ validateEmail(String email){
               ), ),
         const SizedBox(height: 10,),
       MaterialButton(onPressed: (){
-        createData(emailController.text);
+        validateEmail(emailController.text);
+        //createData(emailController.text);
         final snackBar = SnackBar(content: Text(message!,style: const TextStyle(color: Colors.black),),
         backgroundColor: Colors.white,);
         ScaffoldMessenger.of(context).showSnackBar(snackBar);

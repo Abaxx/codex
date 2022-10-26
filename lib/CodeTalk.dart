@@ -13,7 +13,7 @@ class CodeTalkPage extends StatelessWidget {
       if(constraints.biggest.width > 800){
         // Desktop view of Techtalk
         return Scaffold(
-            body:  SingleChildScrollView(child: Column(children: const [Nav(),Header(),CodeTalkSection(),FooterPage()],))
+            body:  SingleChildScrollView(child: Column(children: const [Nav(),Header(),CodeTalkSection(),Footer()],))
         );
       }else{
         //Mobile View of Techtalk
@@ -26,7 +26,7 @@ class CodeTalkPage extends StatelessWidget {
               centerTitle: true,
             ),
             drawer: createDrawer(context),
-            body:  SingleChildScrollView(child: Column(children: const [Nav(),Header(),CodeTalkSection(),FooterPage()],))
+            body:  SingleChildScrollView(child: Column(children: const [Nav(),Header(),CodeTalkSection(),Footer()],))
         );
       }
     });

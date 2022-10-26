@@ -13,7 +13,7 @@ class AboutPage extends StatelessWidget {
       if(constraints.biggest.width > 800){
         //Desktop view
         return Scaffold(
-            body:  SingleChildScrollView(child: Column(children: const [Nav(),AboutContent(),FooterPage()],))
+            body:  SingleChildScrollView(child: Column(children: const [Nav(),AboutContent(),Footer()],))
         );
       }else{ // Mobile View
         return Scaffold(
@@ -25,7 +25,7 @@ class AboutPage extends StatelessWidget {
               centerTitle: true,
             ),
             drawer: createDrawer(context),
-            body:  SingleChildScrollView(child: Column(children: const [Nav(),AboutContent(),FooterPage()],))
+            body:  SingleChildScrollView(child: Column(children: const [Nav(),AboutContent(),Footer()],))
         );
       }
     });

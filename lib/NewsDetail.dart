@@ -22,7 +22,7 @@ class NewsDetailPage extends StatelessWidget {
       if(constraints.biggest.width > 800){
         //Desktop view
         return Scaffold(
-            body:  SingleChildScrollView(child: Column(children: [const Nav(),NewsDetail(title,imageId,detail,storage),const FooterPage()],))
+            body:  SingleChildScrollView(child: Column(children: [const Nav(),NewsDetail(title,imageId,detail,storage),const Footer()],))
         );
       }else{ // Mobile View
         return Scaffold(
@@ -34,7 +34,7 @@ class NewsDetailPage extends StatelessWidget {
               centerTitle: true,
             ),
             drawer: createDrawer(context),
-            body:  SingleChildScrollView(child: Column(children: [const Nav(),NewsDetail(title,imageId,detail,storage),const FooterPage()],))
+            body:  SingleChildScrollView(child: Column(children: [const Nav(),NewsDetail(title,imageId,detail,storage),const Footer()],))
         );
       }
     });

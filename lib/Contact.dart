@@ -13,7 +13,7 @@ class ContactPage extends StatelessWidget {
     return LayoutBuilder(builder: (context,constraints){
       if(constraints.biggest.width > 800){
         return Scaffold(
-            body:  SingleChildScrollView(child: Column(children: [Nav(),ContactForm(),FooterPage()],))
+            body:  SingleChildScrollView(child: Column(children: [Nav(),ContactForm(),Footer()],))
         );
       }else{
         return Scaffold(
@@ -25,7 +25,7 @@ class ContactPage extends StatelessWidget {
               centerTitle: true,
             ),
             drawer: createDrawer(context),
-            body:  SingleChildScrollView(child: Column(children: [Nav(),ContactForm(),FooterPage()],))
+            body:  SingleChildScrollView(child: Column(children: [Nav(),ContactForm(),Footer()],))
         );
       }
     });
