@@ -73,7 +73,8 @@ class ContactState extends State<Contact>{
           'last_name': lastName,
           'from_email': email,
           'subject' : subject,
-          'message': message
+          'message': message,
+          'company': "CodeX Africa"
         }
       }));
   return response.statusCode;
